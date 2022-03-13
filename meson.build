@@ -78,9 +78,28 @@ uam_incs = []
 subdir('source')
 subdir('mesa-imported')
 
-uam = executable(
-	'uam',
-	uam_files,
-	include_directories: uam_incs,
-	install: true,
-)
+if not meson.is_cross_build()
+	uam = executable(
+		'uam',
+		uam_files,
+		include_directories: uam_incs,
+		install: true,
+	)
+else
+	uam = static_library(
+		'uam',
+		uam_files,
+		include_directories: uam_incs,
+		install: true,
+	)
+	# HACK
+	install_subdir(
+		'source',
+		install_dir : get_option('includedir') / meson.project_name(),
+		strip_directory : true
+	)
+	install_subdir(
+		'mesa-imported',
+		install_dir : get_option('includedir') / meson.project_name()
+	)
+endif
