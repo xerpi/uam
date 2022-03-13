@@ -615,6 +615,8 @@ enum tgsi_opcode {
    TGSI_OPCODE_LOD                = 249,
 
    TGSI_OPCODE_LAST               = 250,
+
+   _TGSI_OPCODE_FORCE_SIZE        = 65535
 };
 
 

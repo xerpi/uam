@@ -231,7 +231,7 @@ static void tokens_expand( struct ureg_tokens *tokens,
       tokens->size = (1 << ++tokens->order);
    }
 
-   tokens->tokens = REALLOC(tokens->tokens, 
+   tokens->tokens = REALLOC(tokens->tokens,
                             old_size,
                             tokens->size * sizeof(unsigned));
    if (tokens->tokens == NULL) {
@@ -253,7 +253,7 @@ static union tgsi_any_token *get_tokens( struct ureg_program *ureg,
    struct ureg_tokens *tokens = &ureg->domain[domain];
    union tgsi_any_token *result;
 
-   if (tokens->count + count > tokens->size) 
+   if (tokens->count + count > tokens->size)
       tokens_expand(tokens, count);
 
    result = &tokens->tokens[tokens->count];
@@ -476,7 +476,7 @@ out:
 
 struct ureg_dst
 ureg_DECL_output_masked(struct ureg_program *ureg,
-                        unsigned name,
+                        enum tgsi_semantic name,
                         unsigned index,
                         unsigned usage_mask,
                         unsigned array_id,

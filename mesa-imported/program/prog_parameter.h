@@ -68,7 +68,8 @@ typedef enum
    PROGRAM_MEMORY,      /**< for shared, global and local memory */
    PROGRAM_IMAGE,       /**< for shader images, compile-time only */
    PROGRAM_HW_ATOMIC,   /**< for hw atomic counters, compile-time only */
-   PROGRAM_FILE_MAX
+   PROGRAM_FILE_MAX,
+   _PROGRAM_FORCE_SIZE = 65535
 } gl_register_file;
 
 
